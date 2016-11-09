@@ -99,6 +99,12 @@ venue2.spaces << space4
 
 venue2.save
 
+10.times do |n|
+  space =  Space.create! name: Faker::Name.name, space_type: :desk, area: 10, capicity: 4, quantity: 2, description: Faker::Lorem.paragraph
+  venue2.spaces << space
+  venue2.save
+end
+
 # create_working_time
 from = Time.zone.local(1, 1, 1, 8, 00, 00)
 to = Time.zone.local(1, 1, 1, 18, 00, 00)

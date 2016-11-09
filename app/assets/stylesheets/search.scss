@@ -2,13 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #map-container {
-  width: 100%;
-  min-height: 900px;
-  margin: 0;
-  padding: 0;
   position: relative;
 }
-
 #map {
   position: absolute; top: 0; right: 0; bottom: 0; left: 0;
 }
@@ -145,46 +140,62 @@
   width: 50%;
   height: 50%;
 }
-
-#button-filter1 {
-  border: 1px solid #d6c3c3;
-  width: 48%;
+@media (min-width: 1330px) {
+  #all, #office, #meeting, #desk {
+    font-size: 14px !important;
+  }
 }
-
-#button-filter2 {
-  border: 1px solid #d6c3c3;
-  width: 48%;
-  left: 26px;
+@media (max-width: 1329px) {
+  #all, #office, #meeting, #desk {
+    font-size: 10px !important;
+  }
 }
 
 #desk {
-  width: 23%;
-  text-align: center;
+  background-color: #1bbae1;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   &:focus {
     background-color: #1bbae1;
+    border: 1px solid #107189;
+    font-weight: bold;
   };
 }
 
 #meeting {
-  width: 27%;
-  text-align: center;
+  background-color: #1bbae1;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   &:focus {
     background-color: #1bbae1;
+    border: 1px solid #107189;
+    font-weight: bold;
   };
 }
 
 #office {
-  width: 27%;
+  background-color: #1bbae1;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   &:focus {
     background-color: #1bbae1;
+    border: 1px solid #107189;
+    font-weight: bold;
   };
 }
 
 #all {
-  width: 23%;
-  text-align: center;
+  background-color: #1bbae1;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   &:focus {
     background-color: #1bbae1;
+    border: 1px solid #107189;
+    font-weight: bold;
   };
 }
 
@@ -196,10 +207,6 @@
   padding-top: 5px;
 }
 
-#search-space-result {
-  overflow-y: scroll;
-  height: 740px;
-}
 
 #price {
   display: none;
@@ -207,7 +214,4 @@
 
 #show-space {
   display: none;
-}
-.show-page-space {
-  height: 800px !important;
 }

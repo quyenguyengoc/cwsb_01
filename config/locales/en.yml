@@ -61,6 +61,7 @@ en:
     site_name: "CWBS"
     account: "Account"
     my_account: "My account"
+    message: "Message"
     profile: "Profile"
     setting: "Settings"
     logout: "Logout"

@@ -1,101 +1,83 @@
-<div id="sidebar">
-  <div id="sidebar-scroll">
-    <div class="sidebar-content">
-      <%= link_to root_url, class: "sidebar-brand" do %>
+<nav class="navbar navbar-m2p sidebar navbar-m2p-active" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to root_url, class: "navbar-brand" do %>
         <i class="gi gi-flash"></i>
         <span class="sidebar-nav-mini-hide">
           <strong><%= t "layout.site_name" %></strong>
         </span>
       <% end %>
-      <div class="sidebar-section sidebar-user clearfix sidebar-nav-mini-hide">
-        <div class="sidebar-user-avatar">
-          <%= link_to search_root_path do %>
-            <%= image_tag "placeholders/avatars/avatar2.png" %>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link_to search_spaces_url do %>
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <%= t "layout.search_for_space" %>
           <% end %>
-        </div>
+        </li>
         <% if user_signed_in? %>
-          <div class="sidebar-user-name"><%= current_user.name %></div>
-          <div class="sidebar-user-links">
-            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="Profile"><i class="gi gi-user"></i></a>
-            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="gi gi-envelope"></i></a>
-            <%= link_to edit_user_registration_path, method: :get,
-              title: t("layout.setting"), class: "enable-tooltip" do %>
-              <i class="gi gi-cogwheel"></i>
-            <% end %>
-            <%= link_to destroy_user_session_path, method: :delete,
-              title: t("layout.logout"), class: "enable-tooltip" do %>
-              <i class="gi gi-exit"></i>
-            <% end %>
-          </div>
-        </div>
-        <ul class="sidebar-nav">
           <li>
-            <%= link_to search_spaces_url do %>
-              <span class="sidebar-nav-mini-hide">
-                <%= t "layout.search_for_space" %>
-              </span>
-            <% end %>
-          </li>
-          <li>
-            <a href="javascript:" class="sidebar-nav-menu">
-              <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-              <i class="fa fa-building-o sidebar-nav-icon"></i>
-              <span class="sidebar-nav-mini-hide"><%= t "layout.your_space" %></span>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              <i class="fa fa-user" aria-hidden="true"></i><%= current_user.name %>
             </a>
-            <ul>
-              <li>
-                <%= link_to t("layout.my_spaces"), venues_url %>
-              </li>
-              <li>
-                <%= link_to t("layout.your_booking"), store_bookings_path %>
-              </li>
-            </ul>
-            <a href="javascript:" class="sidebar-nav-menu">
-              <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-              <i class="gi gi-shopping_cart sidebar-nav-icon"></i>
-              <span class="sidebar-nav-mini-hide"><%= t "layout.your_cart" %></span>
-            </a>
-            <ul>
-              <li>
-                <%= link_to t("layout.booking_history"), booking_histories_path %>
-              </li>
-            </ul>
+            <div id="collapseOne" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <table class="table">
+                  <tr>
+                    <td>
+                      <%= link_to "javascript:;", title: t("layout.profile"),
+                        class: "enable-tooltip" do %>
+                        <i class="gi gi-user"></i>
+                      <% end %>
+                      <%= link_to "javascript:;", title: t("layout.message"),
+                        class: "enable-tooltip" do %>
+                        <i class="gi gi-envelope"></i>
+                      <% end %>
+                      <%= link_to edit_user_registration_path, method: :get,
+                        title: t("layout.setting"), class: "enable-tooltip" do %>
+                        <i class="gi gi-cogwheel"></i>
+                      <% end %>
+                      <%= link_to destroy_user_session_path, method: :delete,
+                        title: t("layout.logout"), class: "enable-tooltip" do %>
+                        <i class="gi gi-exit"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= link_to t("layout.my_spaces"), venues_url %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= link_to t("layout.booking_history"),
+                        booking_histories_path %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= link_to t("layout.your_booking"), store_bookings_path %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <%= link_to t("layout.notification"), "#" %>
+                      <span class="badge"></span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
           </li>
-        <% else %>
-          <div class="sidebar-user-name"><%= t "layout.cwsb" %></div>
-          <div class="sidebar-user-links">
-          </div>
-        </div>
-        <ul class="sidebar-nav">
-          <li>
-            <%= link_to search_spaces_url do %>
-              <span class="sidebar-nav-mini-hide">
-                <%= t "layout.search_for_space" %>
-              </span>
-            <% end %>
-          </li>
-          <li>
         <% end %>
-        <li class="sidebar-header">
-          <span class="sidebar-header-title"><%= t "layout.site_name" %></span>
-        </li>
-        <li>
-          <a href="javascript:"><i class="gi gi-charts sidebar-nav-icon"></i>
-            <span class="sidebar-nav-mini-hide"><%= t "layout.how_it_work" %>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:"><i class="gi gi-share_alt sidebar-nav-icon"></i>
-            <span class="sidebar-nav-mini-hide"><%= t "layout.help" %></span>
-          </a>
-        </li>
-        <li>
-          <a href="javascript:"><i class="gi gi-film sidebar-nav-icon"></i>
-            <span class="sidebar-nav-mini-hide"><%= t "layout.about" %></span>
-          </a>
-        </li>
       </ul>
     </div>
   </div>
-</div>
+</nav>
